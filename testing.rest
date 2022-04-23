@@ -1,0 +1,113 @@
+GET http://localhost:3000/users/db/
+###
+GET http://localhost:3000/users/db/613c8f9e6bced848e5466cc2 
+
+###
+GET http://localhost:3000/discussion-forum/view_all
+
+###
+GET http://localhost:3000/discussion-forum/ques_data
+Content-Type: application/json
+
+{
+    "qid" : "6261425b567d2dd6b437a9ea"
+}      
+
+###
+POST http://localhost:3000/discussion-forum/ask
+Content-Type: application/json
+
+{
+    "question": "What is the preparation for GATE?",
+    "author": "cse18733045@matrusri.edu.in",
+    "timestamp": "21 Apr 2021, 01:21:42 PM"
+}
+
+
+###
+POST http://localhost:3000/discussion-forum/post_reply
+Content-Type: application/json
+
+{
+    "qid": "6261425b567d2dd6b437a9ea",
+    "author": "cse18733009@matrusri.edu.in",
+    "timestamp": "25:25:25",
+    "reply": "Sample reply - 3"
+} 
+
+
+###
+GET http://localhost:3000/opportunities/view_all
+
+###
+POST http://localhost:3000/opportunities/post
+Content-Type: application/json
+
+{
+    "title": "Robotics Trainer - Ashtrix Robotics And Research Centre",
+    "content": "Ashtrix is an unconditional venture started to bridge the gap that exists between the obsolete and transient educational system and the change ridden industry standards. Constantly irked by the scares imposed by IT giants and public sectors, people at Ashtrix, have taken the front foot to provide a comprehensive and highly relevant training encompassing all realms of an engineering graduate's worry such as aptitude tests, entry-level technical skills, and soft skills.\n\nWe tend to be spendthrift when it comes to spending our wealth of wisdom. To educate as a service is our intention. We give our best and rest in reaching all corners of the nation to train students and deliver to them the latest trends in technology. Hence, state boundaries are no bounds. We and our services are simply ubiquitous!",
+    "author": "srinivasvasu348@gmail.com",
+    "timestamp": "23 Feb 2021, 11:36:28 PM",
+    "link": "https://internshala.com/internship/detail/robotics-trainer-internship-in-chennai-at-ashtrix-robotics-and-research-centre1613910827"
+
+}
+
+###
+GET http://localhost:3000/opportunities/opp_data
+Content-Type: application/json
+
+{
+    "oppId" : "626149297d4218076705ac78"
+}
+
+
+###
+GET http://localhost:3000/auth/getUsers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBlbWFpbC5jb20iLCJpYXQiOjE2NDQzMTM5NTUsImV4cCI6MTY0NDMxMzk4NX0._dbhzLR9fQp7iefovlNFTkzBIMb_crswvo186VG-rdc"
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "email" : "ajitesh@email.com",
+    "pwd" : "abcd",
+    "lastLogin" : "lassssst Loggggginnnn",
+    "refToken" : "reffff tokkennnn"
+}
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "ajitesh@email.com",
+    "pwd" : "abcd"
+}
+
+###
+POST http://localhost:3000/auth/generateNewToken
+Content-Type: application/json
+
+{
+    "refToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbXNAZW1haWwuY29tIiwiaWF0IjoxNjQ1NDQ4NDk1fQ.SaqMZqAzkeikly-xOOFqINwbcmgODtXQ3Pd4GYv1ErY"
+}
+
+###
+DELETE http://localhost:3000/auth/logout
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBlbWFpbC5jb20iLCJpYXQiOjE2NDQzMTM5NTV9.WmJbmymMgnbE5AE4Wggcz_eVgo9tUkTYeogt7rR1VGo"
+}
+
+###
+POST http://localhost:3000/auth/addRefToken
+Content-Type: application/json
+
+{
+    "token" : "hello Token - 3"
+}
+
+###
+GET http://localhost:3000/auth/getRefTokens
