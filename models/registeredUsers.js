@@ -17,6 +17,10 @@ const registeredUsersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  validGroups: {
+    type: Array,
+    default: [],
+  },
 });
 
 module.exports = mongoose.model("User", registeredUsersSchema);

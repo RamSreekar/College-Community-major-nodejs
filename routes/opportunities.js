@@ -42,7 +42,7 @@ router.get("/opp_data", (req, res) => {
     } catch {
       console.log("ERROR !!!!!\n" + err);
     }
-    if (result == null) res.status(400).json({ msg: "Invalid question ID" });
+    if (result == null) res.status(400).json({ msg: "Invalid post ID" });
 
     res.send(JSON.stringify(result));
   });

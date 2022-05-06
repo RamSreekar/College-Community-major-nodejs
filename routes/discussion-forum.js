@@ -32,13 +32,17 @@ router.get("/ques_data", (req, res) => {
 });
 
 router.post("/ask", (req, res) => {
-  const ques = req.body.question;
+  const title = req.body.title;
+  const branch = req.body.branch;
+  const body = req.body.body;
   const timestamp = req.body.timestamp;
   const author = req.body.author;
 
   Discussion.create(
     {
-      question: ques,
+      title: title,
+      branch: branch,
+      body: body,
       author: author,
       timestamp: timestamp,
     },
@@ -49,7 +53,7 @@ router.post("/ask", (req, res) => {
   );
 });
 
-router.post("/post_reply", (req, res) => {
+router.post("/post_reply/new", (req, res) => {
   const qid = req.body.qid;
   //branch_id = req.body.branch_id;
   const r_timestamp = req.body.timestamp;
@@ -69,10 +73,18 @@ router.post("/post_reply", (req, res) => {
   const key_string = reply_id;
   const reply_pair = { reply_id: reply_json };
 
-  data = { $push: { replies: reply_json } };
+  data = { $push: { replies: reply_pair } };
   Discussion.updateOne({ _id: qid }, data, (err, result) => {
     if (err) throw err;
     res.status(200).json({ msg: "Reply posted successfully." });
+  });
+});
+
+router.post("/delete_question", (req, res) => {
+  const qid = req.body.id;
+  Discussion.deleteOne({ _id: qid }, (err, result) => {
+    if (err) throw err;
+    res.status(200).json({ msg: "Question deleted successfully." });
   });
 });
 

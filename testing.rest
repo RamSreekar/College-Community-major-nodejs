@@ -3,6 +3,23 @@ GET http://localhost:3000/users/db/
 GET http://localhost:3000/users/db/613c8f9e6bced848e5466cc2 
 
 ###
+GET http://localhost:3000/announcements/view_all/CSEA
+
+###
+POST http://localhost:3000/announcements/post
+Content-Type: application/json
+
+{
+    "title": "title",
+    "className": "CSEA",
+    "author": "author",
+    "timestamp": "timestamp",
+    "content": "content",
+    "imageUrl": "imageUrl",
+    "link": "link"
+}
+
+###
 GET http://localhost:3000/discussion-forum/view_all
 
 ###
@@ -10,7 +27,7 @@ GET http://localhost:3000/discussion-forum/ques_data
 Content-Type: application/json
 
 {
-    "qid" : "6261425b567d2dd6b437a9ea"
+    "qid" : "6272a9a1ec56e36abd5ecc2d"
 }      
 
 ###
@@ -18,9 +35,11 @@ POST http://localhost:3000/discussion-forum/ask
 Content-Type: application/json
 
 {
-    "question": "What is the preparation for GATE?",
-    "author": "cse18733045@matrusri.edu.in",
-    "timestamp": "21 Apr 2021, 01:21:42 PM"
+    "title": "How to prepare for GMAT ?",
+    "body" : "I want to write the GMAT exam. Please let me know how to prepare for it.",
+    "branch" : "CSE",
+    "author": "cse187330009@matrusri.edu.in",
+    "timestamp": "4 May 2021, 01:21:42 PM"
 }
 
 
@@ -29,10 +48,10 @@ POST http://localhost:3000/discussion-forum/post_reply
 Content-Type: application/json
 
 {
-    "qid": "6261425b567d2dd6b437a9ea",
+    "qid": "6272a9a1ec56e36abd5ecc2d",
     "author": "cse18733009@matrusri.edu.in",
     "timestamp": "25:25:25",
-    "reply": "Sample reply - 3"
+    "reply": "Sample reply - 002"
 } 
 
 
@@ -63,16 +82,19 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/auth/getUsers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBlbWFpbC5jb20iLCJpYXQiOjE2NDQzMTM5NTUsImV4cCI6MTY0NDMxMzk4NX0._dbhzLR9fQp7iefovlNFTkzBIMb_crswvo186VG-rdc"
+
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFqaXRlc2hAZW1haWwuY29tIiwiaWF0IjoxNjUxNjYyMTI4fQ.UGqh_9nRzjuPXWCFRsDOz3mwlQoEWadTIfGh-_6DT7w"
+
 ###
 POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "email" : "ajitesh@email.com",
+    "email" : "seenu99999@email.com",
     "pwd" : "abcd",
-    "lastLogin" : "lassssst Loggggginnnn",
-    "refToken" : "reffff tokkennnn"
+    "lastLogin" : "lassssst Loggggginnnn - 1",
+    "refToken" : "reffff tokkennnn - 1",
+    "validGroups" : [ 1, 2 ]
 }
 
 ###

@@ -21,6 +21,9 @@ app.use("/discussion-forum", discussionForumRouter);
 const opportunitiesRouter = require("./routes/opportunities");
 app.use("/opportunities", opportunitiesRouter);
 
+const AnnouncementsRouter = require("./routes/announcements");
+app.use("/announcements", AnnouncementsRouter);
+
 //Database Connectivity
 const mongo_url = process.env.DATABASE_URL;
 mongoose.connect(mongo_url);

@@ -31,7 +31,15 @@ const repliesMapSchema = new mongoose.Schema({
 });
 
 const discussionForumSchema = new mongoose.Schema({
-  question: {
+  title: {
+    type: String,
+    required: true,
+  },
+  body: {
+    type: String,
+    required: true,
+  },
+  branch: {
     type: String,
     required: true,
   },
@@ -45,15 +53,22 @@ const discussionForumSchema = new mongoose.Schema({
     //default: Date.now,
   },
   replies: {
+    type: Map,
+    default: {},
+  },
+
+  /*
+  replies: {
     type: Array,
     default: [],
-    /*
+    
     of: new mongoose.Schema({
       reply_id: String,
       reply_data: replySchema,
     }),
-    */
+    
   },
+  */
 });
 
 module.exports = mongoose.model("Discussions", discussionForumSchema);

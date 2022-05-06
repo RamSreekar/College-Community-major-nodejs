@@ -138,8 +138,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/getUsers", authenticateToken, (req, res) => {
-  res
+router.get("/getUsers", (req, res) => {
+  /* res
     .status(201)
     .send(
       "Email : " +
@@ -149,6 +149,15 @@ router.get("/getUsers", authenticateToken, (req, res) => {
         "\nHashed pwd : " +
         users[0].actualPwd
     );
+  */
+  User.find({}, function (err, result) {
+    try {
+      if (err) throw err;
+    } catch {
+      console.log("ERROR !!!!!\n" + err);
+    }
+    res.send(JSON.stringify(result));
+  });
 });
 
 router.post("/addRefToken", (req, res) => {
