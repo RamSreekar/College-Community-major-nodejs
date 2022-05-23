@@ -20,10 +20,11 @@ const notesSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-    required: true,
+    default : ""
   },
   imageUrl: {
     type: String,
+    required: true,
   },
   link: {
     type: String,

@@ -26,6 +26,7 @@ app.use("/announcements", AnnouncementsRouter);
 
 //Database Connectivity
 const mongo_url = process.env.DATABASE_URL;
+//const mongo_compass_url = "mongodb+srv://ramsreekar0929:*****@mycluster.wtgx0.mongodb.net/test?authSource=admin&replicaSet=atlas-gpgdpt-shard-0&readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=true"
 mongoose.connect(mongo_url);
 const db = mongoose.connection;
 
@@ -68,7 +69,7 @@ function cors_headers(req, res, next) {
   return next();
 }
 
-app.listen(3000);
+app.listen(8000);
 
 module.exports = db;
 /*

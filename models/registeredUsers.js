@@ -9,13 +9,16 @@ const registeredUsersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userType: {
+    type: String,
+    required: true,
+  },
   refToken: {
     type: String,
     required: true,
   },
   lastLogin: {
     type: String,
-    required: true,
   },
   validGroups: {
     type: Array,

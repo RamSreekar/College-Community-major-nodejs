@@ -47,7 +47,9 @@ router.post("/post", (req, res) => {
       link: link,
     },
     (err, result) => {
-      if (err) throw err;
+      if (err) {
+        throw err;
+      }
       res.status(200).json({ msg: "Announcement posted successfully." });
     }
   );

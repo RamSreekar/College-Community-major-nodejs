@@ -1,17 +1,17 @@
-GET http://localhost:3000/users/db/
+GET http://localhost:8000/users/db/
 ###
 GET http://localhost:3000/users/db/613c8f9e6bced848e5466cc2 
 
 ###
-GET http://localhost:3000/announcements/view_all/CSEA
+GET http://localhost:3000/announcements/view_all/posts/All
 
 ###
-POST http://localhost:3000/announcements/post
+POST http://localhost:8000/announcements/post
 Content-Type: application/json
 
 {
-    "title": "title",
-    "className": "CSEA",
+    //"title": "title",
+    "className": "MECH",
     "author": "author",
     "timestamp": "timestamp",
     "content": "content",
@@ -20,14 +20,19 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/discussion-forum/view_all
-
-###
-GET http://localhost:3000/discussion-forum/ques_data
+POST http://localhost:3000/discussion-forum/view_all 
 Content-Type: application/json
 
 {
-    "qid" : "6272a9a1ec56e36abd5ecc2d"
+    "branchId" : "General"
+}
+
+###
+POST http://localhost:3000/discussion-forum/ques_data
+Content-Type: application/json
+
+{
+    "qid" : "62810d7917cc233f187e7891"
 }      
 
 ###
@@ -35,25 +40,61 @@ POST http://localhost:3000/discussion-forum/ask
 Content-Type: application/json
 
 {
-    "title": "How to prepare for GMAT ?",
-    "body" : "I want to write the GMAT exam. Please let me know how to prepare for it.",
+    "title": "How to become a Data Scientist ?",
+    "body" : "I want to get a job as a Data Scientist. Please let me know how to prepare for it.",
     "branch" : "CSE",
-    "author": "cse187330009@matrusri.edu.in",
-    "timestamp": "4 May 2021, 01:21:42 PM"
+    "author": "cse187330045@matrusri.edu.in",
+    "timestamp": "15May 2021, 08:26:52 PM"
 }
 
 
 ###
-POST http://localhost:3000/discussion-forum/post_reply
+POST http://localhost:3000/discussion-forum/post_reply/new
 Content-Type: application/json
 
 {
-    "qid": "6272a9a1ec56e36abd5ecc2d",
-    "author": "cse18733009@matrusri.edu.in",
-    "timestamp": "25:25:25",
-    "reply": "Sample reply - 002"
-} 
+    "qid": "62810d7917cc233f187e7891",
+    "author": "cse18733007@matrusri.edu.in",
+    "timestamp": "15 May 2022, 5:15:51 PM",
+    "reply": "You can follow the Data Scientist course on Udemy"
+}
 
+###
+POST http://localhost:8000/discussion-forum/delete_question
+Content-Type: application/json
+
+{
+    "qid" : "6278bf190a9606e9fcc430ff"
+}
+
+###
+POST http://localhost:3000/discussion-forum/delete_reply
+Content-Type: application/json
+
+{
+    "qid" : "62810d7917cc233f187e7891",
+    "replyId" : "undefined"
+}
+
+###
+GET http://localhost:3000/discussion-forum/flaggedPosts
+
+###
+POST http://localhost:3000/discussion-forum/flag_question
+Content-Type: application/json
+
+{
+    "qid" : "62810d7917cc233f187e7891"
+}
+
+###
+POST http://localhost:3000/discussion-forum/flag_reply
+Content-Type: application/json
+
+{
+    "qid": "62810d7917cc233f187e7891",
+    "replyId": "62810d7917cc233f187e7891/cse18733007/15 May 2022, 5:15:51 PM"
+}
 
 ###
 GET http://localhost:3000/opportunities/view_all
@@ -83,18 +124,18 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/auth/getUsers
 
-//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFqaXRlc2hAZW1haWwuY29tIiwiaWF0IjoxNjUxNjYyMTI4fQ.UGqh_9nRzjuPXWCFRsDOz3mwlQoEWadTIfGh-_6DT7w"
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwcGFyYW9AZW1haWwuY29tIiwiaWF0IjoxNjUyMDI3NTIyLCJleHAiOjE2NTIxMTM5MjJ9.gW_7eMPbjea2y3gqYnQ_V6vVgkjVmykqK9WGfFd0NVg
 
 ###
 POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "email" : "seenu99999@email.com",
+    "email" : "cse18733005@matrusri.edu.in",
     "pwd" : "abcd",
-    "lastLogin" : "lassssst Loggggginnnn - 1",
-    "refToken" : "reffff tokkennnn - 1",
-    "validGroups" : [ 1, 2 ]
+    //"lastLogin" : "lassssst Loggggginnnn - 1",
+    //"refToken" : "reffff tokkennnn - 1",
+    "validGroups" : [ "GENERAL" , "CSE" ]
 }
 
 ###
@@ -103,16 +144,16 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email" : "ajitesh@email.com",
-    "pwd" : "abcd"
+    "email" : "cse18733005@matrusri.edu.in",
+    "pwd" : "Sreekar"
 }
 
 ###
-POST http://localhost:3000/auth/generateNewToken
+POST http://localhost:3000/auth/test
 Content-Type: application/json
 
 {
-    "refToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbXNAZW1haWwuY29tIiwiaWF0IjoxNjQ1NDQ4NDk1fQ.SaqMZqAzkeikly-xOOFqINwbcmgODtXQ3Pd4GYv1ErY"
+    "refreshToken" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwcGFyYW9AZW1haWwuY29tIiwiaWF0IjoxNjUyMDEwMzkyfQ.vXq03iw1jVVVkJJP2qhZDA9p9MeSzU-3nkwEUmns2y0"
 }
 
 ###

@@ -23,6 +23,11 @@ const replySchema = new mongoose.Schema({
     required: true,
     default: "",
   },
+  flagged : {
+    type: Boolean,
+    required : true,
+    default : false,
+  }
 });
 
 const repliesMapSchema = new mongoose.Schema({
@@ -37,7 +42,6 @@ const discussionForumSchema = new mongoose.Schema({
   },
   body: {
     type: String,
-    required: true,
   },
   branch: {
     type: String,
@@ -52,8 +56,17 @@ const discussionForumSchema = new mongoose.Schema({
     required: true,
     //default: Date.now,
   },
+  flagType : {
+    type : Number,
+    default : 0
+  },
+  numFlags : {
+    type : Number,
+    default : 0
+  },
   replies: {
-    type: Map,
+    type: Object,
+    required : true,
     default: {},
   },
 

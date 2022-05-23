@@ -34,7 +34,7 @@ router.post("/post", (req, res) => {
   );
 });
 
-router.get("/opp_data", (req, res) => {
+router.post("/opp_data", (req, res) => {
   const opp_id = req.body.oppId;
   Opportunities.findById(opp_id, (err, result) => {
     try {
